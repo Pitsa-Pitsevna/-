@@ -1,0 +1,32 @@
+class User {
+    constructor(name, age, admin = false) {
+        this.name = name;
+        this.age = age;
+        this.admin = admin;
+    }
+    myInfo() {
+        console.log("Меня зовут " + this.name + ", мне " + this.age + "  лет")
+        if(this.admin = true) {
+            console.log("Я админ")
+        }
+    }
+}
+class Moderator extends User{
+    addPost() {
+        console.log("NewPost")
+    }
+    myInfo() {
+        super.myInfo();
+        console.log("Я модератор")
+    }
+}
+let u1 = new User("Petr", 21, true) 
+let u2 = new User("Kate", 19) 
+let u3 = new User("Masha", 20)
+let m1 = new Moderator("Ivan", 22, true)
+
+// в консоли получим:
+// m1.myInfo()
+// main.js:8 Меня зовут Ivan, мне 22  лет
+// main.js:10 Я админ
+// main.js:20 Я модератор
