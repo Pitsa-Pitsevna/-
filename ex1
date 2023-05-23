@@ -1,0 +1,28 @@
+class People {
+    /**
+     * Класс человек
+     * @param {String} fio по формату "Фамилия Имя Отчество"
+     * @param {String} birthday день рождения по формату "24.11.1994"
+     * @param {String} numbers "номер", если больше 2 номеров, то по формату Эномер1, номер2
+     * @param {Number} room комната
+     */
+    constructor(fio, birthday, numbers, room) {
+        let name = fio.toLowerCase().split(" "); //перевели в нижний регистр и разделили знаком пробел
+        this.name = {};
+        this.name.f = name[0][0].toUpperCase() + name[0].slice(1)//если фио будут введены некорректно, эта запись позволяет нам ввести первую букву с заглавной,а остальные осатнутся прописными
+        this.name.i = name[1][0].toUpperCase() + name[1].slice(1)
+        this.name.o = name[2][0].toUpperCase() + name[2].slice(1) //теперь фио будут отдельными ключами этого объекта
+
+        let date = birthday.split(".") //разделили через точку на массив
+        this.date = {}
+        this.date.d = +date[0]
+        this.date.m = +date[1]
+        this.date.y = +date[2]
+        //поместили в отдельные свойства составного объекта date
+
+        let phone = numbers.split(", ")
+
+        this.room = +room
+    }
+}
+let people1 = new People("Иванов Иван Иванович", "24.11.1994", "9984, 8847, 5478", "542")
